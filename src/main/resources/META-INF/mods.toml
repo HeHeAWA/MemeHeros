@@ -6,7 +6,7 @@ showAsResourcePack=false
 
 [[mods]]
 modId="memeheroes"
-version="1.0.0"
+version="${file.jarVersion}"
 displayName="Meme Heroes"
 authors="hehe_awa和他最爱的凉秋谨言"
 description="""

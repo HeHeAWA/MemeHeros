@@ -96,6 +96,21 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
 sourceSets.main.resources.srcDir generateModMetadata
 legacyForge.ideSyncTask generateModMetadata
 
+// 注入 jar manifest 属性，使 mods.toml 的 ${file.jarVersion} 能解析为 mod_version
+jar {
+    manifest {
+        attributes([
+                'Specification-Title'    : mod_id,
+                'Specification-Vendor'   : mod_authors,
+                'Specification-Version'  : '1',
+                'Implementation-Title'   : project.name,
+                'Implementation-Version' : project.jar.archiveVersion,
+                'Implementation-Vendor'  : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+
 publishing {
     publications {
         register('mavenJava', MavenPublication) {
