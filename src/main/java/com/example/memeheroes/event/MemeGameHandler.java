@@ -40,7 +40,7 @@ public class MemeGameHandler {
         if (player.tickCount % 60 == 0) {
             ensureEssentialItems(player);
         }
-        // 每 5 秒刷新全局效果（夜视 + 跳跃提升8），duration 300 保证不闪烁
+        // 每 5 秒检查全局效果（夜视 + 跳跃提升8），无限时长，缺失或被低等级效果压低时补回
         if (player.tickCount % 100 == 0) {
             applyGlobalEffects(player);
         }
@@ -85,15 +85,17 @@ public class MemeGameHandler {
     }
 
     private static void applyGlobalEffects(Player player) {
-        // 夜视（仅当不存在或剩余时间不足时刷新，避免覆盖更高等级）
-        if (!player.hasEffect(MobEffects.NIGHT_VISION)
-                || player.getEffect(MobEffects.NIGHT_VISION).getDuration() < 200) {
-            player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 300, 0, false, false));
+        // 夜视：无限时长（-1），仅在缺失或等级不足时施加，避免覆盖已存在的无限效果
+        MobEffectInstance nv = player.getEffect(MobEffects.NIGHT_VISION);
+        if (nv == null || nv.getAmplifier() < 0) {
+            player.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,
+                    MobEffectInstance.INFINITE_DURATION, 0, false, false));
         }
-        // 跳跃提升8（amplifier 7 = level 8）
-        if (!player.hasEffect(MobEffects.JUMP)
-                || player.getEffect(MobEffects.JUMP).getDuration() < 200) {
-            player.addEffect(new MobEffectInstance(MobEffects.JUMP, 300, 7, false, false));
+        // 跳跃提升8（amplifier 7 = level 8）：无限时长，信标等弱效果会被自动覆盖
+        MobEffectInstance jp = player.getEffect(MobEffects.JUMP);
+        if (jp == null || jp.getAmplifier() < 7) {
+            player.addEffect(new MobEffectInstance(MobEffects.JUMP,
+                    MobEffectInstance.INFINITE_DURATION, 7, false, false));
         }
     }
 }
