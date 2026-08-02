@@ -1,0 +1,28 @@
+# Gradle
+.gradle/
+build/
+
+# Forge dev run directory
+run/
+
+# IDE
+.vscode/
+.trae/
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+bin/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+errors/
+
+# User 3D model assets (reference only, not part of mod build)
+/models/

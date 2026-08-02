@@ -1,0 +1,18 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+issueTrackerURL="https://github.com/example/memeheroes/issues"
+showAsResourcePack=false
+
+[[mods]]
+modId="memeheroes"
+version="1.0.0"
+displayName="Meme Heroes"
+authors="hehe_awa和他最爱的凉秋谨言"
+description="""
+梗明星大乱斗 - 将网络热梗转化为技能！
+"""
+
+[[mixins]]
+package="com.example.memeheroes.mixin"
+config="memeheroes.mixins.json"
