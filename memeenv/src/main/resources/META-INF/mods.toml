@@ -17,6 +17,6 @@ description="""
 [[dependencies.memeenv]]
     modId="memeheroes"
     mandatory=true
-    versionRange="[1.0.1,)"
+    versionRange="[2.0.0,)"
     ordering="BEFORE"
     side="BOTH"
