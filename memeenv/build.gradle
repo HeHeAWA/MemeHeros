@@ -25,6 +25,10 @@ legacyForge {
                 "${mod_id}" {
                     sourceSet(sourceSets.main)
                 }
+                // 运行期同时挂载本体 MOD 的源码，方便 IDE 联调
+                'memeheroes' {
+                    sourceSet(rootProject.findProject(':memeheroes').sourceSets.main)
+                }
             }
         }
         client {
@@ -54,7 +58,8 @@ obfuscation {
 }
 
 dependencies {
-    // 编译期不需要对 memeheroes 的依赖（避免循环）；运行期通过 mods 块挂载
+    // 编译期依赖本体 MOD：memeenv 调用 MemeBridge API（在 memeheroes 中）读取梗列表
+    implementation project(':memeheroes')
 }
 
 jar {

@@ -12,13 +12,8 @@ description="""
 梗明星大乱斗 - 将网络热梗转化为技能！
 """
 
-# 必须安装环境 MOD 才能正常游戏（选梗/菜单/排行榜/全局效果等由它提供）
-[[dependencies.memeheroes]]
-    modId="memeenv"
-    mandatory=true
-    versionRange="[1.0.1,)"
-    ordering="BEFORE"
-    side="BOTH"
+# 本体 MOD 无依赖，可独立运行。
+# 若同时安装环境 MOD（memeenv），则获得完整的选梗 GUI、排行榜、菜单、全局效果等体验。
 
 [[mixins]]
 package="com.example.memeheroes.mixin"

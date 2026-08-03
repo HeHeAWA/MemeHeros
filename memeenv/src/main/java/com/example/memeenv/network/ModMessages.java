@@ -47,8 +47,5 @@ public class ModMessages {
                 .decoder(S2CMenuInfoPacket::decode)
                 .consumerMainThread((msg, ctx) -> msg.handle(ctx))
                 .add();
-
-        // 注册完毕后冻结 MemeBridge 注册表
-        com.example.memeenv.api.MemeBridge.freeze();
     }
 }

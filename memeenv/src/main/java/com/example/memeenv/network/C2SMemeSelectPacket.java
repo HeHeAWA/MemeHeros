@@ -1,6 +1,6 @@
 package com.example.memeenv.network;
 
-import com.example.memeenv.api.MemeBridge;
+import com.example.memeheroes.api.MemeBridge;
 import com.example.memeenv.item.ModItems;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;

@@ -1,7 +1,7 @@
 package com.example.memeenv.client;
 
+import com.example.memeheroes.api.MemeBridge;
 import com.example.memeenv.MemeEnv;
-import com.example.memeenv.api.MemeBridge;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;

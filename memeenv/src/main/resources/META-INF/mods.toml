@@ -9,5 +9,14 @@ version="${file.jarVersion}"
 displayName="Meme Environment"
 authors="lqlovehehe"
 description="""
-梗明星环境 - 提供排行榜、换梗、菜单、全局效果、摔落伤害取消等游戏环境组件
+梗明星环境 - 提供排行榜、换梗、菜单、全局效果、摔落伤害取消等游戏环境组件。
+必须与梗明星大乱斗（memeheroes）一起安装。
 """
+
+# 环境 MOD 必须安装本体 MOD 才能工作：梗技能物品与 MemeBridge 注册中心由 memeheroes 提供
+[[dependencies.memeenv]]
+    modId="memeheroes"
+    mandatory=true
+    versionRange="[1.0.1,)"
+    ordering="BEFORE"
+    side="BOTH"

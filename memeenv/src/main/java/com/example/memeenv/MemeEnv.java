@@ -1,6 +1,7 @@
 package com.example.memeenv;
 
 import com.example.memeenv.item.ModItems;
+import com.example.memeenv.item.ModTabs;
 import com.example.memeenv.network.ModMessages;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,6 +18,7 @@ public class MemeEnv {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
+        ModTabs.register(eventBus);
 
         eventBus.addListener(this::commonSetup);
         eventBus.addListener(this::clientSetup);

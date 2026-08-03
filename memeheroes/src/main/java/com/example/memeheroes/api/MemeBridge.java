@@ -1,4 +1,4 @@
-package com.example.memeenv.api;
+package com.example.memeheroes.api;
 
 import net.minecraft.world.item.Item;
 
@@ -10,9 +10,14 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * 跨模组注册表：允许梗内容 MOD（memeheroes）向环境 MOD（memeenv）注册"梗"的元数据和物品。
- * 物品用 Supplier<Item> 保存，延迟到真正使用（选梗给物品/清物品）时才 resolve，
- * 因此内容 MOD 可以直接在 Mod 构造函数里传入 DeferredRegister/RegistryObject。
+ * 跨模组注册表：允许内容 MOD 向环境 MOD（memeenv）注册"梗"的元数据和物品。
+ *
+ * 该类放在本体 MOD（memeheroes）里，使得：
+ * - 本体 MOD 可独立运行（不依赖环境 MOD）
+ * - 环境 MOD（memeenv）通过编译期依赖读取此注册表
+ * - 运行期：memeenv 强依赖 memeheroes，memeheroes 无依赖
+ *
+ * 物品用 Supplier<Item> 保存，延迟到真正使用（选梗给物品/清物品）时才 resolve。
  */
 public final class MemeBridge {
 
@@ -81,7 +86,7 @@ public final class MemeBridge {
         return entry;
     }
 
-    /** 冻结注册表，由环境 MOD 在 commonSetup 时调用。 */
+    /** 冻结注册表，由本体 MOD 在 commonSetup 时调用。 */
     public static synchronized void freeze() {
         frozen = true;
     }

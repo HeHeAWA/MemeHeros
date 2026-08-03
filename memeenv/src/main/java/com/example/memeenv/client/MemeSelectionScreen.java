@@ -1,7 +1,7 @@
 package com.example.memeenv.client;
 
+import com.example.memeheroes.api.MemeBridge;
 import com.example.memeenv.MemeEnv;
-import com.example.memeenv.api.MemeBridge;
 import com.example.memeenv.network.C2SMemeSelectPacket;
 import com.example.memeenv.network.ModMessages;
 import net.minecraft.client.gui.GuiGraphics;

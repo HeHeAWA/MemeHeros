@@ -25,10 +25,6 @@ legacyForge {
                 "${mod_id}" {
                     sourceSet(sourceSets.main)
                 }
-                // 运行期同时挂载环境 MOD 的源码，方便 IDE 联调
-                'memeenv' {
-                    sourceSet(rootProject.findProject(':memeenv').sourceSets.main)
-                }
             }
         }
         client {
@@ -58,8 +54,8 @@ obfuscation {
 }
 
 dependencies {
-    // 编译期依赖环境 MOD 的 API（MemeBridge 等）
-    implementation project(':memeenv')
+    // 本体 MOD 无任何外部 mod 依赖，可独立运行。
+    // 若同时安装环境 MOD（memeenv），则会触发选梗 GUI、排行榜、全局效果等。
 }
 
 jar {

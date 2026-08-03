@@ -1,6 +1,6 @@
 package com.example.memeheroes;
 
-import com.example.memeenv.api.MemeBridge;
+import com.example.memeheroes.api.MemeBridge;
 import com.example.memeheroes.entity.ModEntities;
 import com.example.memeheroes.item.ModItems;
 import com.example.memeheroes.item.ModTabs;
@@ -50,6 +50,10 @@ public class MemeHeroes {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        // 所有内容 mod 的构造函数都已执行完毕，冻结注册表。
+        // 注意：memeenv 的 commonSetup 会晚于此执行（它依赖 memeheroes），
+        // 因此 memeenv 读 MemeBridge 时数据已就绪且不可变。
+        MemeBridge.freeze();
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
