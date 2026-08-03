@@ -1,0 +1,17 @@
+{
+  "item.memeenv.change_meme": "Change Meme",
+  "item.memeenv.menu": "Menu",
+  "memeenv.menu.title": "Player Info",
+  "memeenv.menu.kills": "Kills: %d",
+  "memeenv.menu.health": "Health: %s / %s",
+  "memeenv.menu.food": "Food: %d",
+  "memeenv.menu.armor": "Armor: %d",
+  "memeenv.menu.level": "Level: %d",
+  "memeenv.menu.current_meme": "Current Meme: %s",
+  "memeenv.menu.no_meme": "None",
+  "memeenv.screen.title": "Choose Your Meme",
+  "memeenv.screen.prev": "Prev",
+  "memeenv.screen.next": "Next",
+  "memeenv.screen.page": "Page %d / %d",
+  "memeenv.leaderboard.title": "Kill Leaderboard"
+}

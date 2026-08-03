@@ -1,9 +1,11 @@
 # Gradle
 .gradle/
+**/build/
 build/
 
 # Forge dev run directory
 run/
+**/run/
 
 # IDE
 .vscode/
@@ -26,3 +28,9 @@ errors/
 
 # User 3D model assets (reference only, not part of mod build)
 /models/
+
+# Local maven repo
+/repo/
+
+# Generated resources
+**/src/generated/

@@ -1,0 +1,17 @@
+{
+  "item.memeenv.change_meme": "换梗道具",
+  "item.memeenv.menu": "菜单",
+  "memeenv.menu.title": "玩家信息",
+  "memeenv.menu.kills": "击杀数: %d",
+  "memeenv.menu.health": "血量: %s / %s",
+  "memeenv.menu.food": "饱食度: %d",
+  "memeenv.menu.armor": "护甲值: %d",
+  "memeenv.menu.level": "经验等级: %d",
+  "memeenv.menu.current_meme": "当前梗: %s",
+  "memeenv.menu.no_meme": "未选择",
+  "memeenv.screen.title": "选择你的梗",
+  "memeenv.screen.prev": "上一页",
+  "memeenv.screen.next": "下一页",
+  "memeenv.screen.page": "第 %d / %d 页",
+  "memeenv.leaderboard.title": "击杀榜"
+}

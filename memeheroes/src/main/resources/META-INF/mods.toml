@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+showAsResourcePack=false
+
+[[mods]]
+modId="memeheroes"
+version="${file.jarVersion}"
+displayName="Meme Heroes"
+authors="lqlovehehe"
+description="""
+梗明星大乱斗 - 将网络热梗转化为技能！
+"""
+
+# 必须安装环境 MOD 才能正常游戏（选梗/菜单/排行榜/全局效果等由它提供）
+[[dependencies.memeheroes]]
+    modId="memeenv"
+    mandatory=true
+    versionRange="[1.0.1,)"
+    ordering="BEFORE"
+    side="BOTH"
+
+[[mixins]]
+package="com.example.memeheroes.mixin"
+config="memeheroes.mixins.json"

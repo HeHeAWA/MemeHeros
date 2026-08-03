@@ -1,0 +1,85 @@
+plugins {
+    id 'net.neoforged.moddev.legacyforge' version '2.0.91'
+}
+
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
+
+legacyForge {
+    version = project.minecraft_version + '-' + project.forge_version
+
+    parchment {
+        mappingsVersion = project.parchment_mappings_version
+        minecraftVersion = project.parchment_minecraft_version
+    }
+
+    runs {
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            logLevel = org.slf4j.event.Level.DEBUG
+            mods {
+                "${mod_id}" {
+                    sourceSet(sourceSets.main)
+                }
+            }
+        }
+        client {
+            client()
+            systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        }
+        server {
+            server()
+            programArgument '--nogui'
+            systemProperty 'forge.enabledGameTestNamespaces', project.mod_id
+        }
+        data {
+            data()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+        }
+    }
+}
+
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+obfuscation {
+    createRemappingConfiguration(configurations.localRuntime)
+}
+
+dependencies {
+    // 编译期不需要对 memeheroes 的依赖（避免循环）；运行期通过 mods 块挂载
+}
+
+jar {
+    manifest {
+        attributes([
+                'Specification-Title'    : mod_id,
+                'Specification-Vendor'   : mod_authors,
+                'Specification-Version'  : '1',
+                'Implementation-Title'   : project.name,
+                'Implementation-Version' : project.jar.archiveVersion,
+                'Implementation-Vendor'  : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+}
+
+publishing {
+    publications {
+        register('mavenJava', MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            url "file://${project.rootProject.projectDir}/repo"
+        }
+    }
+}
