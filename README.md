@@ -2,7 +2,7 @@
 
 > 将网络热梗转化为技能的 Minecraft 1.20.1 Forge 模组
 
-![mod-banner](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Pixel%20art%20minecraft%20style%20banner%2C%20five%20blocky%20heroes%20battling%2C%20flying%20TNT%2C%20golden%20sword%2C%20beer%20bottle%2C%20stone%2C%20hunter%20bow%2C%20blocky%20world%20background%2C%20vibrant%20colors%2C%20game%20poster%20style&image_size=landscape_16_9)
+![mod-banner](https://dao3.fun/_next/image?url=https%3A%2F%2Fassets.box3.fun%2Fcontent%2FjOz2G9mGu1vXlSzGz_y04hZtFDXgkO_OBDigD28likg.png&w=1920&q=75)
 
 [![Minecraft](https://img.shields.io/badge/Minecraft-1.20.1-green.svg)](https://minecraft.net/)
 [![Forge](https://img.shields.io/badge/Forge-47.1.3+-orange.svg)](https://files.minecraftforge.net/)
