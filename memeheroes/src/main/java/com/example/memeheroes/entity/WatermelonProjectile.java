@@ -82,9 +82,8 @@ public class WatermelonProjectile extends ThrowableProjectile implements IEntity
     @Override
     public void tick() {
         super.tick();
-        // 存活时间到期后销毁并触发范围伤害
+        // 存活时间到期后单纯消失，不爆炸
         if (!this.level().isClientSide && this.tickCount >= lifetimeTicks) {
-            explodeArea();
             this.discard();
         }
     }

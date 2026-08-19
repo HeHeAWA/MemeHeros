@@ -14,7 +14,7 @@
 
 ## 📖 项目简介
 
-**梗明星大乱斗**（Meme Heroes）是一个将中文互联网热梗做成可选"职业"的 Minecraft 模组。玩家登录后可从 5 个梗职业中选择一个，获得对应的技能物品；安装环境模组后还能享受排行榜、换梗 GUI、全局增益等完整体验。
+**梗明星大乱斗**（Meme Heroes）是一个将中文互联网热梗做成可选"职业"的 Minecraft 模组。玩家登录后可从 6 个梗职业中选择一个，获得对应的技能物品；安装环境模组后还能享受排行榜、换梗 GUI、全局增益等完整体验。
 
 项目采用**双模组架构**：核心战斗内容（梗技能）与环境管理功能（排行榜/菜单/效果）解耦，玩家可按需安装。
 
@@ -43,7 +43,7 @@
 
 | 安装方式 | 是否可用 | 说明 |
 |---|:---:|---|
-| 只装 `memeheroes` | ✅ | 5 个梗技能物品可从创造栏取出使用 |
+| 只装 `memeheroes` | ✅ | 6 个梗技能物品可从创造栏取出使用 |
 | 只装 `memeenv` | ❌ | Forge 启动时因 mandatory 依赖缺失而拒绝加载 |
 | 两个都装 | ✅ 推荐 | 获得完整体验：选梗 GUI、排行榜、菜单、全局效果 |
 
@@ -75,6 +75,11 @@
 - **杰哥啤酒**：投掷啤酒瓶抛射物
 - **杰除封印**：触发特殊的杰除封印特效
 
+### 6. 🍉 华强买瓜（huaqiang）
+- **西瓜投掷**：发射西瓜抛射物，7 伤害，5×5 范围伤害，无视重力，冷却 5 秒
+- **华强裂瓜**：发射巨型西瓜，114 伤害，7×7 范围伤害，无视重力，冷却 18 秒
+- 西瓜使用 glTF 3D 模型渲染（需安装 PolyMesh）
+
 ---
 
 ## 🎁 环境模组功能
@@ -102,6 +107,7 @@
    - Minecraft 1.20.1
    - Forge 47.1.3 或更高
    - Java 17
+   - **PolyMesh**（可选，推荐安装）—— 用于渲染 glTF 3D 模型（如华强买瓜的西瓜）。未安装时使用 MC 原版方块作为 fallback。[PolyMesh 下载](https://modrinth.com/mod/polymesh)
 
 2. **下载 jar**
    - 前往 [Releases 页面](https://github.com/HeHeAWA/MemeHeros/releases) 下载最新版
@@ -112,7 +118,8 @@
    ```
    .minecraft/mods/
    ├── memeheroes-2.0.0.jar   ← 必须
-   └── memeenv-2.0.0.jar      ← 推荐
+   ├── memeenv-2.0.0.jar      ← 推荐
+   └── polymesh-1.0.0-forge.jar  ← 可选（glTF 3D 模型渲染）
    ```
 
 4. **启动游戏**，登录后即可选择梗职业开始游玩
@@ -256,6 +263,7 @@ if (effect == null || effect.getAmplifier() < targetAmplifier) {
 - **Gradle** 8.x（多模块工程）
 - **Parchment** mappings 2023.09.03
 - **Moddev LegacyForge** 插件 2.0.91
+- **PolyMesh**（可选依赖，compileOnly）—— glTF 3D 模型渲染库
 
 ---
 
