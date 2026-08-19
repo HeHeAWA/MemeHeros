@@ -21,12 +21,16 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 西瓜抛射物 —— 华强买瓜专属。
  *
  * 无视重力，可配置伤害（damage）、渲染缩放（scale）、范围伤害（areaSize）、存活时间（lifetimeTicks）。
+ * 碰到方块或实体不消失，只有存活时间到期才自动消失。
+ * 碰到实体时造成范围伤害（areaSize×areaSize×areaSize），同一实体只受伤一次。
  * scale 通过 SynchedEntityData 同步到客户端用于渲染。
  * damage/areaSize/lifetimeTicks 通过 IEntityAdditionalSpawnData 同步。
  */
@@ -40,6 +44,8 @@ public class WatermelonProjectile extends ThrowableProjectile implements IEntity
     private float scale = 1.5F;
     private float areaSize = 5.0F;       // 伤害范围边长（5×5 或 7×7）
     private int lifetimeTicks = 140;    // 存活时间（7秒 = 140 tick）
+    /** 已被范围伤害命中的实体 ID，防止同一实体多次受伤 */
+    private final Set<Integer> hitEntities = new HashSet<>();
 
     public WatermelonProjectile(EntityType<? extends WatermelonProjectile> entityType, Level level) {
         super(entityType, level);
@@ -73,10 +79,14 @@ public class WatermelonProjectile extends ThrowableProjectile implements IEntity
         return 0.0F;
     }
 
-    /** 不与发射者碰撞 */
+    /** 不与发射者及已受伤的实体碰撞，防止重复伤害 */
     @Override
     public boolean canHitEntity(Entity entity) {
-        return entity.isAlive() && entity instanceof LivingEntity && entity != this.owner;
+        if (!entity.isAlive()) return false;
+        if (!(entity instanceof LivingEntity)) return false;
+        if (entity == this.owner) return false;
+        if (hitEntities.contains(entity.getId())) return false;
+        return true;
     }
 
     @Override
@@ -90,25 +100,23 @@ public class WatermelonProjectile extends ThrowableProjectile implements IEntity
 
     @Override
     protected void onHit(HitResult hitResult) {
-        Level level = this.level();
-        LivingEntity owner = this.owner;
-        super.onHit(hitResult);
-        if (!level.isClientSide) {
-            // 直击伤害
-            if (hitResult.getType() == HitResult.Type.ENTITY) {
-                EntityHitResult entityHitResult = (EntityHitResult) hitResult;
-                Entity hitEntity = entityHitResult.getEntity();
-                if (hitEntity instanceof LivingEntity && hitEntity != owner) {
-                    hitEntity.hurt(this.damageSources().thrown(this, owner), this.damage);
-                }
+        // 不调用 super.onHit()（super 会把 level 置 null）
+        if (this.level().isClientSide) return;
+
+        if (hitResult.getType() == HitResult.Type.ENTITY) {
+            // 碰到实体：造成范围伤害，但西瓜不消失，继续飞行
+            EntityHitResult entityHitResult = (EntityHitResult) hitResult;
+            Entity hitEntity = entityHitResult.getEntity();
+            if (hitEntity instanceof LivingEntity && hitEntity != owner) {
+                explodeArea();
+                hitEntities.add(hitEntity.getId());
             }
-            // 范围伤害（5×5 或 7×7）
-            explodeArea();
-            this.discard();
         }
+        // 碰到方块：什么都不做，直接穿过
+        // 不调用 discard()，西瓜继续飞行直到存活时间到期
     }
 
-    /** 在命中点/超时位置造成范围伤害，附带爆炸粒子效果但不破坏方块。 */
+    /** 在命中点造成范围伤害，附带爆炸粒子效果但不破坏方块。 */
     private void explodeArea() {
         Level level = this.level();
         if (level == null) return;
@@ -126,9 +134,9 @@ public class WatermelonProjectile extends ThrowableProjectile implements IEntity
         for (LivingEntity entity : entities) {
             if (entity == this.owner) continue;
             if (!entity.isAlive()) continue;
-            // 直击目标已经受了全额伤害，跳过避免双倍
-            if (entity == this.getOwner()) continue;
+            if (hitEntities.contains(entity.getId())) continue;  // 已受伤的不再伤
             entity.hurt(this.damageSources().thrown(this, owner), this.damage);
+            hitEntities.add(entity.getId());
         }
     }
 
