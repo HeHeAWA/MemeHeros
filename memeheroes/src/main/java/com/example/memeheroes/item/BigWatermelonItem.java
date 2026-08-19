@@ -18,9 +18,9 @@ public class BigWatermelonItem extends Item {
     public static final int COOLDOWN_TICKS = 360; // 18 秒
     private static final float DAMAGE = 114.0F;
     private static final float SCALE = 0.625F;       // 原 2.5 的 1/4
-    private static final float SPEED_MULTIPLIER = 2.5F;  // 加快
+    private static final float SPEED_MULTIPLIER = 1.67F;  // 减速 1.5 倍
     private static final float AREA_SIZE = 7.0F;     // 7×7
-    private static final int LIFETIME_TICKS = 160;   // 8 秒
+    private static final int LIFETIME_TICKS = 100;   // 5 秒
 
     public BigWatermelonItem(Properties properties) {
         super(properties);
