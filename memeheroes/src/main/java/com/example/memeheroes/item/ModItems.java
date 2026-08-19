@@ -44,6 +44,13 @@ public class ModItems {
     public static final RegistryObject<Item> JIECHU_SEAL = ITEMS.register("jiechu_seal",
             () -> new JiechuSealItem(new Item.Properties().stacksTo(1)));
 
+    // 华强买瓜
+    public static final RegistryObject<Item> WATERMELON = ITEMS.register("watermelon",
+            () -> new WatermelonItem(new Item.Properties().stacksTo(16)));
+
+    public static final RegistryObject<Item> BIG_WATERMELON = ITEMS.register("big_watermelon",
+            () -> new BigWatermelonItem(new Item.Properties().stacksTo(4)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

@@ -52,6 +52,10 @@ obfuscation {
 dependencies {
     // 本体 MOD 无任何外部 mod 依赖，可独立运行。
     // 若同时安装环境 MOD（memeenv），则会触发选梗 GUI、排行榜、全局效果等。
+
+    // PolyMesh：编译期需要（WatermelonPolyMeshRenderer 直接引用 GltfEntityRenderer）；
+    // 运行期可选（ClientSetup 通过 ModList.isLoaded 保护，没装则用 Fallback 渲染器）。
+    compileOnly files(rootProject.file('polymesh-1.0.0-forge.jar'))
 }
 
 jar {

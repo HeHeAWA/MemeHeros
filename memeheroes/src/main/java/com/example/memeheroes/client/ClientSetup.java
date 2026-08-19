@@ -4,6 +4,7 @@ import com.example.memeheroes.entity.ModEntities;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = "memeheroes", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -18,5 +19,14 @@ public class ClientSetup {
         event.registerEntityRenderer(ModEntities.GOLD_NUGGET_PROJECTILE.get(), GoldNuggetRenderer::new);
         event.registerEntityRenderer(ModEntities.DELAYED_GOLD_NUGGET.get(), DelayedGoldNuggetRenderer::new);
         event.registerEntityRenderer(ModEntities.BEER_BOTTLE_PROJECTILE.get(), BeerBottleRenderer::new);
+
+        // 西瓜抛射物：有 PolyMesh 用 glTF 模型，没有则用方块 fallback
+        if (ModList.get().isLoaded("polymesh")) {
+            event.registerEntityRenderer(ModEntities.WATERMELON_PROJECTILE.get(),
+                    WatermelonPolyMeshRenderer::new);
+        } else {
+            event.registerEntityRenderer(ModEntities.WATERMELON_PROJECTILE.get(),
+                    WatermelonFallbackRenderer::new);
+        }
     }
 }

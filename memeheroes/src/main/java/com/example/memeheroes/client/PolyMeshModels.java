@@ -53,7 +53,7 @@ public final class PolyMeshModels {
     // ===============================
 
     private static final String[] MODELS = new String[] {
-            "  西瓜1.0.gltf",
+            "西瓜1.0.gltf",
             "-back-.gltf",
             "114514.gltf",
             "1万8 屠龙宝刀.gltf",

@@ -32,6 +32,8 @@ public class ModTabs {
                         output.accept(ModItems.CHARGE_HUNTER.get());
                         output.accept(ModItems.BEER.get());
                         output.accept(ModItems.JIECHU_SEAL.get());
+                        output.accept(ModItems.WATERMELON.get());
+                        output.accept(ModItems.BIG_WATERMELON.get());
                     })
                     .build());
 

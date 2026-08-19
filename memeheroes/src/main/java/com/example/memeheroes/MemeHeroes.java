@@ -47,6 +47,7 @@ public class MemeHeroes {
         register(3, "shachang", ModItems.GOLD_SWORD, ModItems.RAIN_GOLD_SWORD);
         register(4, "hunter", ModItems.HUNTER, ModItems.CHARGE_HUNTER, () -> Items.SPYGLASS);
         register(5, "jiege", ModItems.BEER, ModItems.JIECHU_SEAL);
+        register(6, "huaqiang", ModItems.WATERMELON, ModItems.BIG_WATERMELON);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

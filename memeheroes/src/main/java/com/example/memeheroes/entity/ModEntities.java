@@ -83,6 +83,15 @@ public class ModEntities {
                     .build("beer_bottle_projectile")
     );
 
+    public static final RegistryObject<EntityType<WatermelonProjectile>> WATERMELON_PROJECTILE = ENTITIES.register(
+            "watermelon_projectile",
+            () -> EntityType.Builder.<WatermelonProjectile>of(WatermelonProjectile::new, MobCategory.MISC)
+                    .sized(1.0F, 1.0F)
+                    .clientTrackingRange(10)
+                    .updateInterval(1)
+                    .build("watermelon_projectile")
+    );
+
     public static void register(IEventBus eventBus) {
         ENTITIES.register(eventBus);
     }
