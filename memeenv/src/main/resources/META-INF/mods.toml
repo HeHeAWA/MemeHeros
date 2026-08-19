@@ -20,3 +20,11 @@ description="""
     versionRange="[2.0.0,)"
     ordering="BEFORE"
     side="BOTH"
+
+# PolyMesh：可选依赖（与 memeheroes 保持一致），装了即可给排行榜/菜单道具等换 gltf 渲染
+[[dependencies.memeenv]]
+    modId="polymesh"
+    mandatory=false
+    versionRange="[1.0.0,)"
+    ordering="NONE"
+    side="CLIENT"

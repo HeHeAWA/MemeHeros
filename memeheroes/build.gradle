@@ -21,11 +21,7 @@ legacyForge {
         configureEach {
             systemProperty 'forge.logging.markers', 'REGISTRIES'
             logLevel = org.slf4j.event.Level.DEBUG
-            mods {
-                "${mod_id}" {
-                    sourceSet(sourceSets.main)
-                }
-            }
+            // legacyforge 默认会自动把 sourceSets.main 登记到 mod_id。
         }
         client {
             client()

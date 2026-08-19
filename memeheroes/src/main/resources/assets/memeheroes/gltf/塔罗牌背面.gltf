@@ -1,0 +1,276 @@
+{
+  "asset": {
+    "generator": "ArenaPro Web VCode Exporter",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_materials_unlit"
+  ],
+  "accessors": [
+    {
+      "name": "positions_0",
+      "componentType": 5126,
+      "count": 24,
+      "type": "VEC3",
+      "bufferView": 0,
+      "byteOffset": 0,
+      "min": [
+        0,
+        0,
+        0
+      ],
+      "max": [
+        31,
+        75,
+        1
+      ]
+    },
+    {
+      "name": "texcoords_0",
+      "componentType": 5126,
+      "count": 24,
+      "type": "VEC2",
+      "bufferView": 1,
+      "byteOffset": 0,
+      "min": [
+        0.027777777777777776,
+        0.012987012987012988
+      ],
+      "max": [
+        0.9722222222222222,
+        0.987012987012987
+      ]
+    },
+    {
+      "name": "indices_0",
+      "componentType": 5121,
+      "count": 36,
+      "type": "SCALAR",
+      "bufferView": 2,
+      "byteOffset": 0,
+      "min": [
+        0
+      ],
+      "max": [
+        23
+      ]
+    }
+  ],
+  "bufferViews": [
+    {
+      "name": "bufferView_positions_0",
+      "buffer": 0,
+      "byteLength": 288,
+      "byteOffset": 0,
+      "byteStride": 12,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_texcoords_0",
+      "buffer": 0,
+      "byteLength": 192,
+      "byteOffset": 288,
+      "byteStride": 8,
+      "target": 34962
+    },
+    {
+      "name": "bufferView_indices_0",
+      "buffer": 0,
+      "byteLength": 36,
+      "byteOffset": 480,
+      "target": 34963
+    },
+    {
+      "name": "bufferView_image",
+      "buffer": 0,
+      "byteLength": 829,
+      "byteOffset": 516
+    },
+    {
+      "name": "bufferView_emissive_image",
+      "buffer": 0,
+      "byteLength": 227,
+      "byteOffset": 1345
+    }
+  ],
+  "buffers": [
+    {
+      "name": "od_JPLbRYG0lxYvlK31G4KcS-gr9pa36hNhaoBYp-us",
+      "byteLength": 1572,
+      "uri": "data:application/octet-stream;base64,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"
+    }
+  ],
+  "images": [
+    {
+      "name": "image",
+      "mimeType": "image/png",
+      "bufferView": 3
+    },
+    {
+      "name": "emissive image",
+      "mimeType": "image/png",
+      "bufferView": 4
+    }
+  ],
+  "materials": [
+    {
+      "name": "material",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 1
+      },
+      "emissiveTexture": {
+        "index": 1
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_unlit": {}
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "mesh_0",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "TEXCOORD_0": 1
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Root",
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "children": [
+        1,
+        2
+      ]
+    },
+    {
+      "name": "Root",
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Root",
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "children": [
+        3
+      ]
+    },
+    {
+      "name": "Object",
+      "mesh": 0,
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "samplers": [
+    {
+      "wrapS": 33071,
+      "wrapT": 33071,
+      "magFilter": 9728,
+      "minFilter": 9728
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "name": "texture",
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "name": "emissive texture",
+      "sampler": 0,
+      "source": 1
+    }
+  ]
+}

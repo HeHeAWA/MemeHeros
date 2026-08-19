@@ -12,8 +12,29 @@ description="""
 梗明星大乱斗 - 将网络热梗转化为技能！
 """
 
-# 本体 MOD 无依赖，可独立运行。
-# 若同时安装环境 MOD（memeenv），则获得完整的选梗 GUI、排行榜、菜单、全局效果等体验。
+[[dependencies.memeheroes]]
+modId="forge"
+mandatory=true
+versionRange="[47.1,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.memeheroes]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1,1.21)"
+ordering="NONE"
+side="BOTH"
+
+# PolyMesh（glTF 渲染库）：可选依赖。
+# - 装了 Polymesh：可用 PolyMeshModels 把 gltf 模型绑定到物品/实体/方块实体
+# - 没装 Polymesh：本 mod 仍能独立运行（5 个梗职业正常工作），但 gltf 模型无法渲染
+[[dependencies.memeheroes]]
+modId="polymesh"
+mandatory=false
+versionRange="[1.0.0,)"
+ordering="NONE"
+side="CLIENT"
 
 [[mixins]]
 package="com.example.memeheroes.mixin"

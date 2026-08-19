@@ -21,15 +21,8 @@ legacyForge {
         configureEach {
             systemProperty 'forge.logging.markers', 'REGISTRIES'
             logLevel = org.slf4j.event.Level.DEBUG
-            mods {
-                "${mod_id}" {
-                    sourceSet(sourceSets.main)
-                }
-                // 运行期同时挂载本体 MOD 的源码，方便 IDE 联调
-                'memeheroes' {
-                    sourceSet(rootProject.findProject(':memeheroes').sourceSets.main)
-                }
-            }
+            // legacyforge 默认会自动把 sourceSets.main 登记到 mod_id，
+            // 不要显式重复添加，否则会抛 "Duplicate source set 'main' in mod"。
         }
         client {
             client()

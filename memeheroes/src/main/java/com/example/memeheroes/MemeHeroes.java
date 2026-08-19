@@ -57,5 +57,7 @@ public class MemeHeroes {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        // 若 Polymesh 已安装，预热 309 个 glTF 模型缓存；未安装则 safe no-op。
+        event.enqueueWork(com.example.memeheroes.client.PolyMeshModels::warmupIfAvailable);
     }
 }
