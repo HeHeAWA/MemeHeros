@@ -26,6 +26,9 @@ public class BigWatermelonItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
+        if (player.getCooldowns().isOnCooldown(this)) {
+            return InteractionResultHolder.pass(itemStack);
+        }
         if (!level.isClientSide) {
             WatermelonProjectile projectile = new WatermelonProjectile(level, player, DAMAGE, SCALE);
             float velocity = (float) (player.getSpeed() * 10.0 * SPEED_MULTIPLIER);

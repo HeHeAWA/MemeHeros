@@ -372,10 +372,21 @@ public final class PolyMeshModels {
         // Minecraft 1.20.1 的 ResourceLocation 路径只允许 [a-z0-9/._-]，
         // 不允许中文、大写字母、空格等。含非法字符的文件名会被跳过（无法用于 PolyMesh）。
         // 如需使用某个中文命名的模型，需先将文件重命名为纯 ASCII 名并更新 MODELS 数组。
+        //
+        // PolyMesh 的 GltfModelManager.reload() 扫描 "models/gltf" 目录后，
+        // 缓存 key 格式为 <namespace>:<filename_without_extension>（去掉路径前缀和后缀）。
+        // 例如 assets/memeheroes/models/gltf/watermelon_1.0.gltf → 缓存 key = memeheroes:watermelon_1.0
         for (String fileName : MODELS) {
             try {
                 String key = toKey(fileName);
-                ResourceLocation rl = new ResourceLocation(NAMESPACE, GLTF_DIR + "/" + fileName);
+                // 去掉 .gltf/.glb 后缀，生成 PolyMesh 缓存 key 格式
+                String shortName = fileName;
+                if (shortName.toLowerCase(Locale.ROOT).endsWith(".gltf")) {
+                    shortName = shortName.substring(0, shortName.length() - 5);
+                } else if (shortName.toLowerCase(Locale.ROOT).endsWith(".glb")) {
+                    shortName = shortName.substring(0, shortName.length() - 4);
+                }
+                ResourceLocation rl = new ResourceLocation(NAMESPACE, shortName);
                 BY_KEY.put(key, rl);
                 BY_FILE_NAME.put(fileName, rl);
                 RL_TO_KEY.put(rl, key);

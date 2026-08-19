@@ -26,6 +26,9 @@ public class WatermelonItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
+        if (player.getCooldowns().isOnCooldown(this)) {
+            return InteractionResultHolder.pass(itemStack);
+        }
         if (!level.isClientSide) {
             WatermelonProjectile projectile = new WatermelonProjectile(level, player, DAMAGE, SCALE);
             // 玩家最大速度 × 2：getSpeed() 默认 0.1，×10 转为抛射物速度基数
