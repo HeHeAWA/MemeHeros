@@ -20,7 +20,7 @@ public class WatermelonItem extends Item {
     private static final float SCALE = 0.375F;       // 原 1.5 的 1/4
     private static final float SPEED_MULTIPLIER = 2.0F;  // 减速 1.5 倍
     private static final float AREA_SIZE = 5.0F;     // 5×5
-    private static final int LIFETIME_TICKS = 60;    // 3 秒
+    private static final int LIFETIME_TICKS = 30;    // 1.5 秒
 
     public WatermelonItem(Properties properties) {
         super(properties);
