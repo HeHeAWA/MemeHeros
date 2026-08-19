@@ -53,7 +53,7 @@ public final class PolyMeshModels {
     // ===============================
 
     private static final String[] MODELS = new String[] {
-            "西瓜1.0.gltf",
+            "watermelon_1.0.gltf",
             "-back-.gltf",
             "114514.gltf",
             "1万8 屠龙宝刀.gltf",
@@ -369,13 +369,19 @@ public final class PolyMeshModels {
     private static final Map<ResourceLocation, String> RL_TO_KEY = new LinkedHashMap<>();
 
     static {
-        // 注意：文件名里可能有空格/中文/特殊字符，Minecraft ResourceLocation 的 path 对其做 % 编码是合法的。
+        // Minecraft 1.20.1 的 ResourceLocation 路径只允许 [a-z0-9/._-]，
+        // 不允许中文、大写字母、空格等。含非法字符的文件名会被跳过（无法用于 PolyMesh）。
+        // 如需使用某个中文命名的模型，需先将文件重命名为纯 ASCII 名并更新 MODELS 数组。
         for (String fileName : MODELS) {
-            String key = toKey(fileName);
-            ResourceLocation rl = new ResourceLocation(NAMESPACE, GLTF_DIR + "/" + fileName);
-            BY_KEY.put(key, rl);
-            BY_FILE_NAME.put(fileName, rl);
-            RL_TO_KEY.put(rl, key);
+            try {
+                String key = toKey(fileName);
+                ResourceLocation rl = new ResourceLocation(NAMESPACE, GLTF_DIR + "/" + fileName);
+                BY_KEY.put(key, rl);
+                BY_FILE_NAME.put(fileName, rl);
+                RL_TO_KEY.put(rl, key);
+            } catch (Exception e) {
+                // 文件名含非法字符（中文/大写/空格等），跳过此模型
+            }
         }
     }
 

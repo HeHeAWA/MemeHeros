@@ -27,7 +27,7 @@ public class WatermelonPolyMeshRenderer extends EntityRenderer<WatermelonProject
     public WatermelonPolyMeshRenderer(EntityRendererProvider.Context context) {
         super(context);
         this.delegate = GltfEntityRendererFactory.<WatermelonProjectile>create(
-                PolyMeshModels.getByFileName("西瓜1.0.gltf")
+                PolyMeshModels.getByFileName("watermelon_1.0.gltf")
         ).create(context);
         this.shadowRadius = 0.5F;
     }
