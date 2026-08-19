@@ -1,5 +1,6 @@
 package com.example.memeenv.event;
 
+import com.example.memeheroes.api.MemeBridge;
 import com.example.memeenv.item.ModItems;
 import com.example.memeenv.network.ModMessages;
 import com.example.memeenv.network.S2COpenMemeScreenPacket;
@@ -8,6 +9,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -15,12 +17,24 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.List;
+
 @Mod.EventBusSubscriber(modid = "memeenv", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class MemeGameHandler {
 
     @SubscribeEvent
     public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
         if (!(event.getEntity() instanceof ServerPlayer sp)) return;
+
+        // 清除上次登录留下的旧梗物品，避免同时保留两个梗
+        int oldMemeId = sp.getPersistentData().getInt("selected_meme");
+        if (oldMemeId != 0) {
+            MemeBridge.MemeEntry oldMeme = MemeBridge.byId(oldMemeId);
+            if (oldMeme != null) {
+                clearMemeItems(sp, oldMeme);
+            }
+        }
+
         ModMessages.INSTANCE.send(PacketDistributor.PLAYER.with(() -> sp),
                 new S2COpenMemeScreenPacket());
         ensureEssentialItems(sp);
@@ -75,6 +89,24 @@ public class MemeGameHandler {
         if (!inv.add(stack)) {
             player.drop(stack, false);
         }
+    }
+
+    /** 遍历玩家全部 41 个槽位，清除属于指定梗的所有技能物品。 */
+    private static void clearMemeItems(Player player, MemeBridge.MemeEntry meme) {
+        List<Item> items = meme.getItems();
+        Inventory inv = player.getInventory();
+        for (int i = 0; i < inv.getContainerSize(); i++) {
+            ItemStack stack = inv.getItem(i);
+            if (!stack.isEmpty()) {
+                for (Item item : items) {
+                    if (stack.is(item)) {
+                        inv.setItem(i, ItemStack.EMPTY);
+                        break;
+                    }
+                }
+            }
+        }
+        inv.setChanged();
     }
 
     private static void applyGlobalEffects(Player player) {

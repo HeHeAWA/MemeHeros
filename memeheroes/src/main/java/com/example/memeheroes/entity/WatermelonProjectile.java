@@ -66,15 +66,24 @@ public class WatermelonProjectile extends ThrowableProjectile implements IEntity
         return 0.0F;
     }
 
+    /** 不与发射者碰撞，防止出生即销毁。 */
+    @Override
+    public boolean canHitEntity(Entity entity) {
+        return entity.isAlive() && entity instanceof LivingEntity && entity != this.owner;
+    }
+
     @Override
     protected void onHit(HitResult hitResult) {
+        // super.onHit 可能将 level 置 null，必须先保存引用
+        Level level = this.level();
+        LivingEntity owner = this.owner;
         super.onHit(hitResult);
-        if (!this.level().isClientSide) {
+        if (!level.isClientSide) {
             if (hitResult.getType() == HitResult.Type.ENTITY) {
                 EntityHitResult entityHitResult = (EntityHitResult) hitResult;
                 Entity hitEntity = entityHitResult.getEntity();
-                if (hitEntity instanceof LivingEntity && hitEntity != this.owner) {
-                    hitEntity.hurt(this.damageSources().thrown(this, this.owner), this.damage);
+                if (hitEntity instanceof LivingEntity && hitEntity != owner) {
+                    hitEntity.hurt(this.damageSources().thrown(this, owner), this.damage);
                 }
             }
             this.discard();
