@@ -42,8 +42,8 @@ public final class PolyMeshModels {
     public static final String NAMESPACE = com.example.memeheroes.MemeHeroes.MOD_ID;
 
     /** 所有模型在资源包中的相对目录（相对于 assets/<namespace>/）。
-     *  Polymesh 的 GltfModelManager 会按此路径扫描/解析 gltf。 */
-    public static final String GLTF_DIR = "gltf";
+     *  Polymesh 的 GltfModelManager.reload() 扫描的固定路径是 "models/gltf"。 */
+    public static final String GLTF_DIR = "models/gltf";
 
     // ===============================
     // 模型索引 —— 309 条。放在静态 BY_* 初始化之前，避免非法前向引用。
