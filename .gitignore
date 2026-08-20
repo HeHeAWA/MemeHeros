@@ -26,6 +26,10 @@ bin/
 *.log
 errors/
 
+# Minecraft crash reports
+crash-reports/
+minecraft-exported-crash-info-*/
+
 # User 3D model assets (reference only, not part of mod build)
 /models/
 

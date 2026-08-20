@@ -111,14 +111,14 @@
 
 2. **下载 jar**
    - 前往 [Releases 页面](https://github.com/HeHeAWA/MemeHeros/releases) 下载最新版
-   - 至少下载 `memeheroes-2.0.0.jar`（本体）
-   - 推荐同时下载 `memeenv-2.0.0.jar`（环境）
+   - 至少下载 `memeheroes-2.1.0.jar`（本体）
+   - 推荐同时下载 `memeenv-2.1.0.jar`（环境）
 
 3. **放入 mods 目录**
    ```
    .minecraft/mods/
-   ├── memeheroes-2.0.0.jar   ← 必须
-   ├── memeenv-2.0.0.jar      ← 推荐
+   ├── memeheroes-2.1.0.jar   ← 必须
+   ├── memeenv-2.1.0.jar      ← 推荐
    └── polymesh-1.0.0-forge.jar  ← 可选（glTF 3D 模型渲染）
    ```
 
@@ -143,8 +143,8 @@
 ```
 
 构建产物位于各子模块的 `build/libs/`：
-- `memeheroes/build/libs/memeheroes-2.0.0.jar`
-- `memeenv/build/libs/memeenv-2.0.0.jar`
+- `memeheroes/build/libs/memeheroes-2.1.0.jar`
+- `memeenv/build/libs/memeenv-2.1.0.jar`
 
 ### 开发调试
 
@@ -271,6 +271,7 @@ if (effect == null || effect.getAmplifier() < targetAmplifier) {
 
 | 版本 | 说明 |
 |---|---|
+| 2.1.0 | 新增华强买瓜梗（西瓜抛射物 + PolyMesh glTF 模型渲染），西瓜可穿过方块/实体 |
 | 2.0.0 | 拆分为双模组架构（memeheroes + memeenv），反转依赖方向使本体可独立运行 |
 | 1.0.1 | 全局夜视与跳跃提升改为无限时长，修复闪烁问题 |
 | 1.0.0 | 初始版本（单模组） |
