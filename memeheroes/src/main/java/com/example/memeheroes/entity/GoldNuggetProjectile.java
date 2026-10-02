@@ -13,6 +13,8 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 
+import com.example.memeheroes.config.MemeDamageConfig;
+
 public class GoldNuggetProjectile extends ThrowableProjectile {
     private int lifespan = 60;
 
@@ -45,7 +47,7 @@ public class GoldNuggetProjectile extends ThrowableProjectile {
             EntityHitResult entityHitResult = (EntityHitResult) hitResult;
             Entity hitEntity = entityHitResult.getEntity();
             if (hitEntity instanceof LivingEntity && hitEntity != this.getOwner()) {
-                hitEntity.hurt(this.damageSources().thrown(this, this.getOwner()), 16.0F);
+                hitEntity.hurt(this.damageSources().thrown(this, this.getOwner()), MemeDamageConfig.getDamage("hunter.gold_nugget"));
             }
         }
         this.discard();

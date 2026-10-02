@@ -13,6 +13,8 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 
+import com.example.memeheroes.config.MemeDamageConfig;
+
 public class DelayedGoldNugget extends ThrowableProjectile {
     private int lifespan = 220;
     private int chargeTime = 30;
@@ -68,7 +70,7 @@ public class DelayedGoldNugget extends ThrowableProjectile {
             EntityHitResult entityHitResult = (EntityHitResult) hitResult;
             Entity hitEntity = entityHitResult.getEntity();
             if (hitEntity instanceof LivingEntity && hitEntity != this.getOwner()) {
-                hitEntity.hurt(this.damageSources().thrown(this, this.getOwner()), 25.0F);
+                hitEntity.hurt(this.damageSources().thrown(this, this.getOwner()), MemeDamageConfig.getDamage("hunter.delayed_gold_nugget"));
             }
         }
         this.discard();

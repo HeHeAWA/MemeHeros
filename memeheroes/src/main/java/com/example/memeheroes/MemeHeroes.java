@@ -1,13 +1,18 @@
 package com.example.memeheroes;
 
 import com.example.memeheroes.api.MemeBridge;
+import com.example.memeheroes.command.ChangeMemeDamageCommand;
+import com.example.memeheroes.config.MemeDamageConfig;
 import com.example.memeheroes.entity.ModEntities;
 import com.example.memeheroes.item.ModItems;
 import com.example.memeheroes.item.ModTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.server.ServerStartedEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -60,5 +65,15 @@ public class MemeHeroes {
     private void clientSetup(final FMLClientSetupEvent event) {
         // 若 Polymesh 已安装，预热 309 个 glTF 模型缓存；未安装则 safe no-op。
         event.enqueueWork(com.example.memeheroes.client.PolyMeshModels::warmupIfAvailable);
+    }
+
+    @SubscribeEvent
+    public void onRegisterCommands(RegisterCommandsEvent event) {
+        ChangeMemeDamageCommand.register(event.getDispatcher());
+    }
+
+    @SubscribeEvent
+    public void onServerStarted(ServerStartedEvent event) {
+        MemeDamageConfig.load();
     }
 }

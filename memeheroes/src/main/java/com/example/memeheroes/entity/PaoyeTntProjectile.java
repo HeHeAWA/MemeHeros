@@ -20,6 +20,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraftforge.network.NetworkHooks;
 
+import com.example.memeheroes.config.MemeDamageConfig;
+
 public class PaoyeTntProjectile extends ThrowableProjectile {
 
     public PaoyeTntProjectile(EntityType<? extends PaoyeTntProjectile> entityType, Level level) {
@@ -38,7 +40,7 @@ public class PaoyeTntProjectile extends ThrowableProjectile {
             EntityHitResult entityHitResult = (EntityHitResult) hitResult;
             Entity hitEntity = entityHitResult.getEntity();
             if (hitEntity != this.getOwner() && hitEntity instanceof LivingEntity && !this.level().isClientSide) {
-                hitEntity.hurt(this.damageSources().explosion(this, this.getOwner()), 10000.0F);
+                hitEntity.hurt(this.damageSources().explosion(this, this.getOwner()), MemeDamageConfig.getDamage("paoye.tnt"));
             }
         }
         
@@ -87,7 +89,7 @@ public class PaoyeTntProjectile extends ThrowableProjectile {
                 
                 double distance = entity.distanceTo(this);
                 if (distance <= explosionRadius) {
-                    entity.hurt(explosionDamage, 10000.0F);
+                    entity.hurt(explosionDamage, MemeDamageConfig.getDamage("paoye.tnt"));
                 }
             }
         }

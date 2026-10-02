@@ -12,6 +12,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 
+import com.example.memeheroes.config.MemeDamageConfig;
+
 public class BeerBottleProjectile extends Entity {
     private LivingEntity owner;
     private int lifespan = 80;
@@ -55,7 +57,7 @@ public class BeerBottleProjectile extends Entity {
             AABB boundingBox = this.getBoundingBox().inflate(0.5D);
             for (LivingEntity entity : this.level().getEntitiesOfClass(LivingEntity.class, boundingBox)) {
                 if (entity != this.owner) {
-                    entity.hurt(this.damageSources().thrown(this, this.owner), 7.0F);
+                    entity.hurt(this.damageSources().thrown(this, this.owner), MemeDamageConfig.getDamage("jiege.beer"));
                     entity.addEffect(new net.minecraft.world.effect.MobEffectInstance(
                             net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN, 60, 1));
                     this.discard();

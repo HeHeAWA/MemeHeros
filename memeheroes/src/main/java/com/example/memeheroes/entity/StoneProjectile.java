@@ -11,6 +11,8 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.NetworkHooks;
 
+import com.example.memeheroes.config.MemeDamageConfig;
+
 public class StoneProjectile extends ThrowableProjectile {
     private LivingEntity owner;
 
@@ -34,7 +36,7 @@ public class StoneProjectile extends ThrowableProjectile {
                 EntityHitResult entityHitResult = (EntityHitResult) hitResult;
                 Entity hitEntity = entityHitResult.getEntity();
                 if (hitEntity instanceof LivingEntity && hitEntity != this.owner) {
-                    hitEntity.hurt(this.damageSources().thrown(this, this.owner), 10.0F);
+                    hitEntity.hurt(this.damageSources().thrown(this, this.owner), MemeDamageConfig.getDamage("netizen.stone"));
                 }
             }
             this.discard();

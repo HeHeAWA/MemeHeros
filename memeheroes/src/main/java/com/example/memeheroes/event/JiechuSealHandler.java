@@ -12,6 +12,8 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import com.example.memeheroes.config.MemeDamageConfig;
+
 @Mod.EventBusSubscriber(modid = "memeheroes", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class JiechuSealHandler {
     @SubscribeEvent
@@ -38,7 +40,7 @@ public class JiechuSealHandler {
                 double distance = entity.distanceTo(player);
                 if (distance <= 2.0D) {
                     // 使用玩家攻击伤害源，正确计入战斗/复活机制
-                    entity.hurt(player.damageSources().playerAttack(player), 50.0F);
+                    entity.hurt(player.damageSources().playerAttack(player), MemeDamageConfig.getDamage("jiege.jiechu_seal"));
                 }
             }
 

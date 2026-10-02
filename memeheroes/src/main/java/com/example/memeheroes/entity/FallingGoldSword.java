@@ -11,6 +11,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.network.NetworkHooks;
 
+import com.example.memeheroes.config.MemeDamageConfig;
+
 public class FallingGoldSword extends Entity {
     private LivingEntity owner;
     private int lifespan = 200;
@@ -60,7 +62,7 @@ public class FallingGoldSword extends Entity {
             AABB boundingBox = this.getBoundingBox().inflate(0.5D);
             for (LivingEntity entity : this.level().getEntitiesOfClass(LivingEntity.class, boundingBox)) {
                 if (entity != this.owner) {
-                    entity.hurt(this.damageSources().thrown(this, this.owner), 50.0F);
+                    entity.hurt(this.damageSources().thrown(this, this.owner), MemeDamageConfig.getDamage("shachang.falling_gold_sword"));
                 }
             }
             
