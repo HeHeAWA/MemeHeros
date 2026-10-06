@@ -15,14 +15,14 @@ import net.minecraft.world.level.Level;
  *
  * 行为完全参照华强买瓜的西瓜投掷：
  * 伤害 8（可通过 /changeMemeDamage yaju.projectile_114514 调整）| 无视重力 | 冷却 5 秒
- * 范围伤害 5×5 | 存活 1.5 秒 | 速度与西瓜一致 | 渲染 114514.gltf
+ * 范围伤害 5×5 | 存活 1.5 秒 | 速度与西瓜一致 | 渲染 114514.gltf（原始模型的 1/16）
  */
 public class Item114514 extends Item {
     public static final int COOLDOWN_TICKS = 100; // 5 秒
     private static final String DAMAGE_KEY = "yaju.projectile_114514";
-    private static final float SCALE = 0.375F;        // 与西瓜一致：原 1.5 的 1/4
+    private static final float SCALE = 0.0625F;       // glTF 原始模型的 1/16（在 1/8 基础上再减半）
     private static final float SPEED_MULTIPLIER = 2.0F; // 与西瓜一致
-    private static final float AREA_SIZE = 5.0F;      // 5×5
+    private static final float AREA_SIZE = 5.0F;      // 击中后范围伤害 5×5
     private static final int LIFETIME_TICKS = 30;     // 1.5 秒
 
     public Item114514(Properties properties) {
