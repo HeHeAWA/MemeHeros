@@ -14,7 +14,7 @@
 
 ## 📖 项目简介
 
-**梗明星大乱斗**（Meme Heroes）是一个将中文互联网热梗做成可选"职业"的 Minecraft 模组。玩家登录后可从 6 个梗职业中选择一个，获得对应的技能物品；安装环境模组后还能享受排行榜、换梗 GUI、全局增益等完整体验。
+**梗明星大乱斗**（Meme Heroes）是一个将中文互联网热梗做成可选"职业"的 Minecraft 模组。玩家登录后可从 7 个梗职业中选择一个，获得对应的技能物品；安装环境模组后还能享受排行榜、换梗 GUI、全局增益等完整体验。
 
 项目采用**双模组架构**：核心战斗内容（梗技能）与环境管理功能（排行榜/菜单/效果）解耦，玩家可按需安装。
 
@@ -49,7 +49,7 @@
 
 ---
 
-## 🎭 5 个梗职业
+## 🎭 7 个梗职业
 
 登录服务器后，环境模组会弹出选梗 GUI 让你选择职业。每个职业拥有 2~3 件专属技能物品：
 
@@ -79,6 +79,10 @@
 - **西瓜投掷**：发射西瓜抛射物，7 伤害，5×5 范围伤害，无视重力，冷却 5 秒
 - **华强裂瓜**：发射巨型西瓜，114 伤害，7×7 范围伤害，无视重力，冷却 18 秒
 - 西瓜使用 glTF 3D 模型渲染（需安装 PolyMesh）
+
+### 7. 🐷 野兽先辈（yaju）
+- **114514**：发射 114514 模型抛射物，8 伤害，5×5 范围伤害，无视重力，冷却 5 秒（速度与西瓜一致，使用 glTF 3D 模型，需 PolyMesh）
+- **野兽咆哮**：对玩家周围 8×8×8 范围内所有生物造成 16 伤害，冷却 20 秒；被命中的玩家会收到咆哮私信
 
 ---
 
@@ -111,14 +115,14 @@
 
 2. **下载 jar**
    - 前往 [Releases 页面](https://github.com/HeHeAWA/MemeHeros/releases) 下载最新版
-   - 至少下载 `memeheroes-2.2.0.jar`（本体）
-   - 推荐同时下载 `memeenv-2.2.0.jar`（环境）
+   - 至少下载 `memeheroes-2.3.0.jar`（本体）
+   - 推荐同时下载 `memeenv-2.3.0.jar`（环境）
 
 3. **放入 mods 目录**
    ```
    .minecraft/mods/
-   ├── memeheroes-2.2.0.jar   ← 必须
-   ├── memeenv-2.2.0.jar      ← 推荐
+   ├── memeheroes-2.3.0.jar   ← 必须
+   ├── memeenv-2.3.0.jar      ← 推荐
    └── polymesh-1.0.0-forge.jar  ← 可选（glTF 3D 模型渲染）
    ```
 
@@ -143,8 +147,8 @@
 ```
 
 构建产物位于各子模块的 `build/libs/`：
-- `memeheroes/build/libs/memeheroes-2.2.0.jar`
-- `memeenv/build/libs/memeenv-2.2.0.jar`
+- `memeheroes/build/libs/memeheroes-2.3.0.jar`
+- `memeenv/build/libs/memeenv-2.3.0.jar`
 
 ### 开发调试
 
@@ -271,6 +275,7 @@ if (effect == null || effect.getAmplifier() < targetAmplifier) {
 
 | 版本 | 说明 |
 |---|---|
+| 2.3.0 | 新增第 7 个梗职业「野兽先辈」：114514 抛射物（glTF 模型，8 伤害）+ 野兽咆哮 AOE（16 伤害，附带咆哮私信） |
 | 2.2.0 | 新增管理员指令 `/changeMemeDamage`，可在线调整每个梗技能的伤害数值（持久化到 config/memeheroes/damages.json） |
 | 2.1.0 | 新增华强买瓜梗（西瓜抛射物 + PolyMesh glTF 模型渲染），西瓜可穿过方块/实体 |
 | 2.0.0 | 拆分为双模组架构（memeheroes + memeenv），反转依赖方向使本体可独立运行 |

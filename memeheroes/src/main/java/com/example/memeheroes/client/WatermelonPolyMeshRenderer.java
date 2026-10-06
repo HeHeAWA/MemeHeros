@@ -9,16 +9,22 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
 /**
- * 西瓜抛射物的 PolyMesh 渲染器。仅在 PolyMesh 已安装时由 ClientSetup 加载。
+ * 西瓜抛射物（及同逻辑抛射物，如 114514）的 PolyMesh 渲染器。
+ * 仅在 PolyMesh 已安装时由 ClientSetup 加载。
+ * 默认渲染 watermelon_1.0.gltf；通过构造参数可指定其他模型。
  */
 public class WatermelonPolyMeshRenderer extends EntityRenderer<WatermelonProjectile> {
 
     private final EntityRenderer<WatermelonProjectile> delegate;
 
     public WatermelonPolyMeshRenderer(EntityRendererProvider.Context context) {
+        this(context, "watermelon_1.0.gltf");
+    }
+
+    public WatermelonPolyMeshRenderer(EntityRendererProvider.Context context, String modelFileName) {
         super(context);
         this.delegate = GltfEntityRendererFactory.<WatermelonProjectile>create(
-                PolyMeshModels.getByFileName("watermelon_1.0.gltf")
+                PolyMeshModels.getByFileName(modelFileName)
         ).create(context);
         this.shadowRadius = 0.3F;
     }

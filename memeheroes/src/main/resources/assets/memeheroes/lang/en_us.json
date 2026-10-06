@@ -11,6 +11,8 @@
   "item.memeheroes.jiechu_seal": "Seal Breaking",
   "item.memeheroes.watermelon": "Watermelon Throw",
   "item.memeheroes.big_watermelon": "Huaqiang Watermelon Split",
+  "item.memeheroes.projectile_114514": "114514",
+  "item.memeheroes.beast_cry": "Beast Cry",
   "entity.memeheroes.paoye_tnt_projectile": "Paoye TNT",
   "entity.memeheroes.poison_tnt_projectile": "Poison TNT",
   "entity.memeheroes.stone_projectile": "Stone",
@@ -20,10 +22,12 @@
   "entity.memeheroes.delayed_gold_nugget": "Delayed Gold Nugget",
   "entity.memeheroes.beer_bottle_projectile": "Beer Bottle",
   "entity.memeheroes.watermelon_projectile": "Watermelon",
+  "entity.memeheroes.projectile_114514": "114514",
   "memeheroes.meme.paoye.name": "Paoye Attack",
   "memeheroes.meme.netizen.name": "Cheerful Netizen",
   "memeheroes.meme.shachang.name": "Solo Siege & Shipyard",
   "memeheroes.meme.hunter.name": "Cheerful Hunter",
   "memeheroes.meme.jiege.name": "Jiege Don't Do It",
-  "memeheroes.meme.huaqiang.name": "Huaqiang Buying Watermelon"
+  "memeheroes.meme.huaqiang.name": "Huaqiang Buying Watermelon",
+  "memeheroes.meme.yaju.name": "Yaju Senpai"
 }

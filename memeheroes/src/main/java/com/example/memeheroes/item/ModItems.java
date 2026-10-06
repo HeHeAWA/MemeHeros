@@ -51,6 +51,13 @@ public class ModItems {
     public static final RegistryObject<Item> BIG_WATERMELON = ITEMS.register("big_watermelon",
             () -> new BigWatermelonItem(new Item.Properties().stacksTo(4)));
 
+    // 野兽先辈
+    public static final RegistryObject<Item> PROJECTILE_114514 = ITEMS.register("projectile_114514",
+            () -> new Item114514(new Item.Properties().stacksTo(16)));
+
+    public static final RegistryObject<Item> BEAST_CRY = ITEMS.register("beast_cry",
+            () -> new BeastCryItem(new Item.Properties().stacksTo(1)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

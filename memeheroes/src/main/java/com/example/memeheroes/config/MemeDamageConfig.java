@@ -61,6 +61,10 @@ public final class MemeDamageConfig {
         // 华强买瓜
         registerDefault("huaqiang.watermelon", 7.0F);
         registerDefault("huaqiang.big_watermelon", 114.0F);
+
+        // 野兽先辈
+        registerDefault("yaju.projectile_114514", 8.0F);    // Item114514 → 复用 WatermelonProjectile
+        registerDefault("yaju.beast_cry", 16.0F);            // BeastCryItem → 8×8 AOE
     }
 
     private MemeDamageConfig() {}

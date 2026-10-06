@@ -51,9 +51,20 @@ public class WatermelonProjectile extends ThrowableProjectile implements IEntity
         super(entityType, level);
     }
 
+    /** 兼容旧调用：默认使用西瓜实体类型。 */
     public WatermelonProjectile(Level level, LivingEntity shooter, float damage, float scale,
                                 float areaSize, int lifetimeTicks) {
-        super(ModEntities.WATERMELON_PROJECTILE.get(), level);
+        this(ModEntities.WATERMELON_PROJECTILE.get(), level, shooter, damage, scale, areaSize, lifetimeTicks);
+    }
+
+    /**
+     * 通用构造：允许子类/调用方传入自定义 EntityType，
+     * 从而复用同一套抛射物逻辑但绑定不同的客户端渲染器（如 114514 模型）。
+     */
+    public WatermelonProjectile(EntityType<? extends WatermelonProjectile> entityType, Level level,
+                                LivingEntity shooter, float damage, float scale,
+                                float areaSize, int lifetimeTicks) {
+        super(entityType, level);
         this.setOwner(shooter);
         this.owner = shooter;
         this.damage = damage;

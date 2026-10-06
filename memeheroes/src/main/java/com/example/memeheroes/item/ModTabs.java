@@ -34,6 +34,8 @@ public class ModTabs {
                         output.accept(ModItems.JIECHU_SEAL.get());
                         output.accept(ModItems.WATERMELON.get());
                         output.accept(ModItems.BIG_WATERMELON.get());
+                        output.accept(ModItems.PROJECTILE_114514.get());
+                        output.accept(ModItems.BEAST_CRY.get());
                     })
                     .build());
 

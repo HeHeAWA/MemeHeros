@@ -24,8 +24,13 @@ public class ClientSetup {
         if (ModList.get().isLoaded("polymesh")) {
             event.registerEntityRenderer(ModEntities.WATERMELON_PROJECTILE.get(),
                     WatermelonPolyMeshRenderer::new);
+            // 野兽先辈 114514：复用同一渲染器类，但指定 114514.gltf 模型
+            event.registerEntityRenderer(ModEntities.PROJECTILE_114514.get(),
+                    ctx -> new WatermelonPolyMeshRenderer(ctx, "114514.gltf"));
         } else {
             event.registerEntityRenderer(ModEntities.WATERMELON_PROJECTILE.get(),
+                    WatermelonFallbackRenderer::new);
+            event.registerEntityRenderer(ModEntities.PROJECTILE_114514.get(),
                     WatermelonFallbackRenderer::new);
         }
     }

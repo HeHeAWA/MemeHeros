@@ -92,6 +92,16 @@ public class ModEntities {
                     .build("watermelon_projectile")
     );
 
+    // 野兽先辈 · 114514 抛射物：复用西瓜抛射物逻辑，仅渲染模型不同（114514.gltf）
+    public static final RegistryObject<EntityType<WatermelonProjectile>> PROJECTILE_114514 = ENTITIES.register(
+            "projectile_114514",
+            () -> EntityType.Builder.<WatermelonProjectile>of(WatermelonProjectile::new, MobCategory.MISC)
+                    .sized(1.0F, 1.0F)
+                    .clientTrackingRange(10)
+                    .updateInterval(1)
+                    .build("projectile_114514")
+    );
+
     public static void register(IEventBus eventBus) {
         ENTITIES.register(eventBus);
     }

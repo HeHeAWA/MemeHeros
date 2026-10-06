@@ -40,6 +40,7 @@
 | 4 | `hunter` | `HUNTER`, `CHARGE_HUNTER` | `GoldNuggetProjectile`, `DelayedGoldNugget` | `hunter.gold_nugget`, `hunter.delayed_gold_nugget` | 16 / 25 |
 | 5 | `jiege` | `BEER`, `JIECHU_SEAL` | `BeerBottleProjectile` | `jiege.beer`, `jiege.jiechu_seal` | 7 / 50 |
 | 6 | `huaqiang` | `WATERMELON`, `BIG_WATERMELON` | `WatermelonProjectile` | `huaqiang.watermelon`, `huaqiang.big_watermelon` | 7 / 114 |
+| 7 | `yaju` | `PROJECTILE_114514`, `BEAST_CRY` | `WatermelonProjectile`（复用，独立 entity type） | `yaju.projectile_114514`, `yaju.beast_cry` | 8 / 16 |
 
 > **AI 注意**：`GoldNuggetProjectile` 同时被 `HunterItem` 和 `RainGoldSwordItem` 使用，但当前只注册了 `hunter.gold_nugget` 一个 key。若需要为两个梗分别调整金粒伤害，需新增 key 并在 `RainGoldSwordItem` 中传入。
 
